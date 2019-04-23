@@ -128,6 +128,8 @@ int MakeSpaces(const vector<double>&X,const vector<double>&Y,int embedding,bool 
   xkPts  = annAllocPts(maxPts, dimxk);				// allocate data points
   kPts   = annAllocPts(maxPts, dimk);				// allocate data points
 
+  printf("%s %f\n", "X.size", X.size());
+
   for(unsigned int i=embedding;i<X.size();i++){
       if(i>Y.size())	break;
       int t=0;
