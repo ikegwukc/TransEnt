@@ -121,6 +121,8 @@ int MakeSpaces(const vector<double>&X,const vector<double>&Y,int embedding,bool 
     pFilek   = fopen("k.space","w");
  }*/
   int maxPts =  X.size()+1;						   //max number of points
+  printf("%s %f\n", "maxPts", maxPts);
+
   int nPts   =  0;
 
   xkyPts = annAllocPts(maxPts, dimxky);				// allocate data points
