@@ -572,6 +572,8 @@ int compute_TE(double& TE, vector<double>&X, vector<double>&Y, int e, int k, str
   // choosing the method for calculating TE
   if(method == "mi_diff" || method == "MI_diff")
     {
+      printf("%s %f\n", "X.size", X.size())
+      
       TE = TE_mutual_information_difference(nPts, k, embedding, xkykdTree, kykdTree, xkkdTree, kkdTree, X, xkyPts, kyPts, xkPts, kPts);
     }
   /*  else if(method == "Direct")
