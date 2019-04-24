@@ -577,10 +577,12 @@ int compute_TE(double& TE, vector<double>&X, vector<double>&Y, int e, int k, str
     {
       cout << "X.size():" << X.size() << endl;
 
-      cout << "Elements in X" << endl ; 
+      cout << "Elements in X" << endl ;
       for (auto it = X.begin(); it != X.end(); it++){
         cout << *it << " ";
       }
+      cout << endl;
+      cout << "---------------------" << endl;
 
       TE = TE_mutual_information_difference(nPts, k, embedding, xkykdTree, kykdTree, xkkdTree, kkdTree, X, xkyPts, kyPts, xkPts, kPts);
     }
