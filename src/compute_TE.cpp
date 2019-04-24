@@ -68,6 +68,9 @@ int safetyCheck(const vector<double>&X,const vector<double>&Y,int embedding,
       ANNpoint tmpPky  = kyPts[i];
       ANNpoint tmpPxk  = xkPts[i];
       ANNpoint tmpPk   = kPts[i];
+
+      cout << "In SafetyCheck nPts is: " << nPts << endl;
+
       for(int j=i+1;j<nPts;j++)
         {
           if(tmpPxky == xkyPts[j])
@@ -121,7 +124,6 @@ int MakeSpaces(const vector<double>&X,const vector<double>&Y,int embedding,bool 
     pFilek   = fopen("k.space","w");
  }*/
   int maxPts =  X.size()+1;						   //max number of points
-  printf("%s %f\n", "maxPts", maxPts);
 
   int nPts   =  0;
 
@@ -130,8 +132,8 @@ int MakeSpaces(const vector<double>&X,const vector<double>&Y,int embedding,bool 
   xkPts  = annAllocPts(maxPts, dimxk);				// allocate data points
   kPts   = annAllocPts(maxPts, dimk);				// allocate data points
 
-  printf("%s %f\n", "X.size", X.size());
-
+  printf("%s %f\n", "In MakeSpaces: X.size()", X.size());
+  cout << "In MakeSpaces: &X.size(): " << &X.size();
   for(unsigned int i=embedding;i<X.size();i++){
       if(i>Y.size())	break;
       int t=0;
@@ -149,6 +151,7 @@ int MakeSpaces(const vector<double>&X,const vector<double>&Y,int embedding,bool 
       xkyPts[nPts][t]=Y[i-1];//if(DEBUG)	fprintf(pFilexky,"%f,",Y[i-1]);
       kyPts[nPts][t-1]=Y[i-1];//if(DEBUG)	fprintf(pFileky,"%f,",Y[i-1]);
       nPts++;
+      cout << "nPts++: " << nPts << endl;
       //    if(DEBUG)	fprintf(pFilexky,"\n");
       //    if(DEBUG)	fprintf(pFilexk,"\n");
       //    if(DEBUG)	fprintf(pFileky,"\n");
@@ -416,7 +419,7 @@ double TE_mutual_information_difference(int nPts, int k, int embedding,
       Cnt2 = countByDistance(kkdTree,  kPts[i],  kdist);
       if(Cnt2 == 0) {Cnt2=1;}//not good again overflow
       cntK_XK += digamma(Cnt2);
-      cout << "Cnt2: " << Cnt2 << endl;
+      //cout << "Cnt2: " << Cnt2 << endl;
     }
   //  if(DEBUG) printf("av dist: %f\n",avDist/nPts);
 
