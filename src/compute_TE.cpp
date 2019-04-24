@@ -132,8 +132,7 @@ int MakeSpaces(const vector<double>&X,const vector<double>&Y,int embedding,bool 
   xkPts  = annAllocPts(maxPts, dimxk);				// allocate data points
   kPts   = annAllocPts(maxPts, dimk);				// allocate data points
 
-  printf("%s %f\n", "In MakeSpaces: X.size()", X.size());
-  cout << "In MakeSpaces: &X.size(): " << &X.size();
+  cout << "In MakeSpaces: X.size() " << X.size());
   for(unsigned int i=embedding;i<X.size();i++){
       if(i>Y.size())	break;
       int t=0;
@@ -429,7 +428,8 @@ double TE_mutual_information_difference(int nPts, int k, int embedding,
   // TE = (digK - 1/k - (cntX_XKY + cntKY_XKY)/nPts + digN) - (digK - 1/k - (cntX_XK + cntK_XK)/nPts + digN)
   // which simplifies to:
   double TE = (cntX_XK + cntK_XK)/nPts - (cntX_XKY + cntKY_XKY)/nPts;
-  printf("%f %f %f %f %f\n", cntX_XK, cntK_XK, cntX_XKY, cntKY_XKY, nPts);
+  cout << cntX_XK << " " << cntK_XK << " " << cntX_XKY << " "<< cntKY_XKY << " " << nPts << endl;
+  //printf("%f %f %f %f %f\n", cntX_XK, cntK_XK, cntX_XKY, cntKY_XKY, nPts);
   return TE;
 }
 
