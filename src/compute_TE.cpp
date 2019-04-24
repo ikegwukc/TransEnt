@@ -416,6 +416,7 @@ double TE_mutual_information_difference(int nPts, int k, int embedding,
       Cnt2 = countByDistance(kkdTree,  kPts[i],  kdist);
       if(Cnt2 == 0) {Cnt2=1;}//not good again overflow
       cntK_XK += digamma(Cnt2);
+      cout << Cnt2 << endl;
     }
   //  if(DEBUG) printf("av dist: %f\n",avDist/nPts);
 
