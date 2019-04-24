@@ -571,10 +571,12 @@ int compute_TE(double& TE, vector<double>&X, vector<double>&Y, int e, int k, str
   int   nPts;								//number of points
   // making all spaces (xky, ky, xk, k) and kdtrees
   nPts = MakeSpaces(X,Y,embedding,safetyChk,xkyPts,kyPts,xkPts,kPts,xkykdTree,kykdTree,xkkdTree,kkdTree);
+  cout << "nPts" << nPts << endl;
   // choosing the method for calculating TE
   if(method == "mi_diff" || method == "MI_diff")
     {
-      printf("%s %f\n", "nPts", nPts);
+      cout << X.size() << endl;
+      cout << X << endl;
 
       TE = TE_mutual_information_difference(nPts, k, embedding, xkykdTree, kykdTree, xkkdTree, kkdTree, X, xkyPts, kyPts, xkPts, kPts);
     }
