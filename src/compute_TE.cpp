@@ -150,7 +150,7 @@ int MakeSpaces(const vector<double>&X,const vector<double>&Y,int embedding,bool 
       xkyPts[nPts][t]=Y[i-1];//if(DEBUG)	fprintf(pFilexky,"%f,",Y[i-1]);
       kyPts[nPts][t-1]=Y[i-1];//if(DEBUG)	fprintf(pFileky,"%f,",Y[i-1]);
       nPts++;
-      cout << "nPts++: " << nPts << endl;
+      //cout << "nPts++: " << nPts << endl;
       //    if(DEBUG)	fprintf(pFilexky,"\n");
       //    if(DEBUG)	fprintf(pFilexk,"\n");
       //    if(DEBUG)	fprintf(pFileky,"\n");
@@ -230,6 +230,9 @@ int countByDistanceView(ANNkd_tree* kdTree, ANNpoint Pt, double Distance)
   //  if(DEBUG)	printf("dist: %f cnt: %d\n",Distance,cnt);
   ANNidxArray    nnIdx = new ANNidx[cnt];    // allocate near neigh indices
   ANNdistArray    dists = new ANNdist[cnt];    // allocate near neighbor dists
+
+  cout <<  "In countByDistanceView" << nnIdx << endl;
+
   cnt= kdTree->annkFRSearch(Pt,
                             Distance,    // the distance within which the neighbors are counted
                             cnt,
@@ -428,6 +431,7 @@ double TE_mutual_information_difference(int nPts, int k, int embedding,
   // TE = (digK - 1/k - (cntX_XKY + cntKY_XKY)/nPts + digN) - (digK - 1/k - (cntX_XK + cntK_XK)/nPts + digN)
   // which simplifies to:
   double TE = (cntX_XK + cntK_XK)/nPts - (cntX_XKY + cntKY_XKY)/nPts;
+
   cout << cntX_XK << " " << cntK_XK << " " << cntX_XKY << " "<< cntKY_XKY << " " << nPts << endl;
   //printf("%f %f %f %f %f\n", cntX_XK, cntK_XK, cntX_XKY, cntKY_XKY, nPts);
   return TE;
