@@ -240,10 +240,10 @@ int countByDistanceView(ANNkd_tree* kdTree, ANNpoint Pt, double Distance)
                             dists,
                             0);
   //  if(DEBUG)
-  //  for(int i=0;i<cnt;i++){
-  //	  printf("%d of %d: %f dist %f pindx %d\n",i,cnt,abs(dists[i]-Distance),dists[i],nnIdx[i]);
+    for(int i=0;i<cnt;i++){
+  	  printf("%d of %d: %f dist %f pindx %d\n",i,cnt,abs(dists[i]-Distance),dists[i],nnIdx[i]);
         //cout<<i<<" of "<< cnt<<" : "<<abs(dists[i]-Distance)<<" dist "<<dists[i]<<" pindx "<<nnIdx[i]<<endl;
-  //  }
+    }
   //  if(DEBUG)	printf("-----------\n");
 
   delete [] nnIdx;
