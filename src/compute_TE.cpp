@@ -219,7 +219,7 @@ ANNidx kthNeighbor_graunteed(ANNkd_tree* kdTree, int k, ANNpoint Pt){
 }
 
 
-int countByDistanceView(ANNkd_tree* kdTree, ANNpoint Pt, double Distance)
+int countByDistanceView(ANNkd_tree* kdTree, ANNpoint Pt, double Distance, int z)
 {
   int cnt= kdTree->annkFRSearch(Pt,    // query point
                                 Distance,    // the distance within which the neighbors are counted
@@ -240,10 +240,13 @@ int countByDistanceView(ANNkd_tree* kdTree, ANNpoint Pt, double Distance)
                             dists,
                             0);
   //  if(DEBUG)
-  for(int i=0;i<cnt;i++){
-    printf("%d of %d: %f dist %f pindx %d\n",i,cnt,abs(dists[i]-Distance),dists[i],nnIdx[i]);
-    cout<<i<<" of "<< cnt<<" : "<<abs(dists[i]-Distance)<<" dist "<<dists[i]<<" pindx "<<nnIdx[i]<<endl;
-    }
+
+  if (z == 1){
+    for(int i=0;i<cnt;i++){
+      printf("%d of %d: %f dist %f pindx %d\n",i,cnt,abs(dists[i]-Distance),dists[i],nnIdx[i]);
+      cout<<i<<" of "<< cnt<<" : "<<abs(dists[i]-Distance)<<" dist "<<dists[i]<<" pindx "<<nnIdx[i]<<endl;
+      }
+  }
   //  if(DEBUG)	printf("-----------\n");
 
   delete [] nnIdx;
@@ -414,7 +417,7 @@ double TE_mutual_information_difference(int nPts, int k, int embedding,
       cntX_XK   += digamma(Cnt2);
       // Count the number of points in the KY subspace, using the XKY distance:
       // and re-using fooCnt
-      Cnt1 = countByDistanceView(kykdTree, kyPts[i], kydist);
+      Cnt1 = countByDistanceView(kykdTree, kyPts[i], kydist,i );
       if(Cnt1 == 0) {Cnt1=1;}
       cntKY_XKY += digamma(Cnt1); // and sum its digamma
       // and in the K subspace, using the XK distance:
