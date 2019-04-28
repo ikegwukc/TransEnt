@@ -231,7 +231,7 @@ int countByDistanceView(ANNkd_tree* kdTree, ANNpoint Pt, double Distance)
   ANNidxArray    nnIdx = new ANNidx[cnt];    // allocate near neigh indices
   ANNdistArray    dists = new ANNdist[cnt];    // allocate near neighbor dists
 
-  cout <<  "In countByDistanceView" << nnIdx << endl;
+  //cout <<  "In countByDistanceView" << nnIdx << endl;
 
   cnt= kdTree->annkFRSearch(Pt,
                             Distance,    // the distance within which the neighbors are counted
