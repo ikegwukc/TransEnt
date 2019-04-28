@@ -248,7 +248,7 @@ int countByDistanceView(ANNkd_tree* kdTree, ANNpoint Pt, double Distance, int z)
       //}
   //}
   //  if(DEBUG)	printf("-----------\n");
-  cout<<"cnt: "<<i<<": "<<cnt<<endl;
+  cout<<"cnt: "<<z<<": "<<cnt<<endl;
   delete [] nnIdx;
   delete [] dists;
   return cnt;
