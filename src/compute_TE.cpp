@@ -240,15 +240,15 @@ int countByDistanceView(ANNkd_tree* kdTree, ANNpoint Pt, double Distance, int z)
                             dists,
                             0);
   //  if(DEBUG)
-  cout<<"cnt: "<<z<<": "<<cnt<<endl;
+  //cout<<"cnt: "<<z<<": "<<cnt<<endl;
 
-  if (z == 1){
-    for(int i=0;i<cnt;i++){
+  //if (z == 1){
+  //  for(int i=0;i<cnt;i++){
       //printf("%d of %d: %f dist %f pindx %d\n",i,cnt,abs(dists[i]-Distance),dists[i],nnIdx[i]);
       //cout<<i<<" of "<< cnt<<" : "<<abs(dists[i]-Distance)<<" dist "<<dists[i]<<" pindx "<<nnIdx[i]<<endl;
-      cout << "pindx"<<nnIdx[i]<<endl;
-      }
-  }
+  //    cout << "pindx"<<nnIdx[i]<<endl;
+  //    }
+  //}
   //  if(DEBUG)	printf("-----------\n");
   delete [] nnIdx;
   delete [] dists;
@@ -256,7 +256,7 @@ int countByDistanceView(ANNkd_tree* kdTree, ANNpoint Pt, double Distance, int z)
 }
 
 // The count is the number of points less than or equal to the distance
-int countByDistance(ANNkd_tree* kdTree, ANNpoint Pt, double Distance)
+int countByDistance(ANNkd_tree* kdTree, ANNpoint Pt, double Distance, int z)
 {
   int cnt= kdTree->annkFRSearch(Pt,				// query point
                                 Distance,		// the distance within which the neighbors are counted
@@ -271,6 +271,16 @@ int countByDistance(ANNkd_tree* kdTree, ANNpoint Pt, double Distance)
          if(cnt != fooCnt)
                  printf("cnt not match\n");
  }*/
+
+ cout<<"cnt: "<<z<<": "<<cnt<<endl;
+
+ if (z == 1){
+   for(int i=0;i<cnt;i++){
+     //printf("%d of %d: %f dist %f pindx %d\n",i,cnt,abs(dists[i]-Distance),dists[i],nnIdx[i]);
+     //cout<<i<<" of "<< cnt<<" : "<<abs(dists[i]-Distance)<<" dist "<<dists[i]<<" pindx "<<nnIdx[i]<<endl;
+     cout << "pindx"<<nnIdx[i]<<endl;
+     }
+ }
 
   return cnt;
 }
@@ -422,7 +432,7 @@ double TE_mutual_information_difference(int nPts, int k, int embedding,
       if(Cnt1 == 0) {Cnt1=1;}
       cntKY_XKY += digamma(Cnt1); // and sum its digamma
       // and in the K subspace, using the XK distance:
-      Cnt2 = countByDistance(kkdTree,  kPts[i],  kdist);
+      Cnt2 = countByDistance(kkdTree,  kPts[i],  kdist, i);
       if(Cnt2 == 0) {Cnt2=1;}//not good again overflow
       cntK_XK += digamma(Cnt2);
       //cout << "Cnt2: " << Cnt2 << endl;
