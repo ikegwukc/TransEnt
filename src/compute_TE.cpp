@@ -529,10 +529,10 @@ double TE_generalize_correlation_sum(int nPts, int k, int embedding,
   int foo=0;
   for(int i=0;i<nPts;i++){
       //	if(DEBUG)	printf("dist %f\n",eDistance);
-      cntXKY = countByDistance(xkykdTree, xkyPts[i], eDistance);// counts of points in XKY space within eDistance from point i
-      cntKY  = countByDistance( kykdTree,  kyPts[i], eDistance);// counts of points in KY space within eDistance from point i
-      cntXK  = countByDistance( xkkdTree,  xkPts[i], eDistance);// counts of points in XK space within eDistance from point i
-      cntK   = countByDistance(  kkdTree,   kPts[i], eDistance);// counts of points in K space within eDistance from point i
+      cntXKY = countByDistance(xkykdTree, xkyPts[i], eDistance, i);// counts of points in XKY space within eDistance from point i
+      cntKY  = countByDistance( kykdTree,  kyPts[i], eDistance, i);// counts of points in KY space within eDistance from point i
+      cntXK  = countByDistance( xkkdTree,  xkPts[i], eDistance, i);// counts of points in XK space within eDistance from point i
+      cntK   = countByDistance(  kkdTree,   kPts[i], eDistance, i);// counts of points in K space within eDistance from point i
 
       // if cntXKY is zero, counts in other cnts have to be zero as well
       /*if(cntXKY != 0 && DEBUG)				  // error checking
