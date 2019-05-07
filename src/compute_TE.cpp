@@ -240,15 +240,16 @@ int countByDistanceView(ANNkd_tree* kdTree, ANNpoint Pt, double Distance, int z)
                             dists,
                             0);
   //  if(DEBUG)
+  cout<<"cnt: "<<z<<": "<<cnt<<endl;
 
-  //if (z == 1){
-    //for(int i=0;i<cnt;i++){
+  if (z == 1){
+    for(int i=0;i<cnt;i++){
       //printf("%d of %d: %f dist %f pindx %d\n",i,cnt,abs(dists[i]-Distance),dists[i],nnIdx[i]);
       //cout<<i<<" of "<< cnt<<" : "<<abs(dists[i]-Distance)<<" dist "<<dists[i]<<" pindx "<<nnIdx[i]<<endl;
-      //}
-  //}
+      cout << "pindx"<<nnIdx[i]<<endl;
+      }
+  }
   //  if(DEBUG)	printf("-----------\n");
-  cout<<"cnt: "<<z<<": "<<cnt<<endl;
   delete [] nnIdx;
   delete [] dists;
   return cnt;
@@ -588,12 +589,12 @@ int compute_TE(double& TE, vector<double>&X, vector<double>&Y, int e, int k, str
     {
       cout << "X.size():" << X.size() << endl;
 
-      cout << "Elements in X" << endl ;
-      for (auto it = X.begin(); it != X.end(); it++){
-        cout << *it << " ";
-      }
-      cout << endl;
-      cout << "---------------------" << endl;
+      //cout << "Elements in X" << endl ;
+      //for (auto it = X.begin(); it != X.end(); it++){
+      //  cout << *it << " ";
+      //}
+      //cout << endl;
+      //cout << "---------------------" << endl;
 
       TE = TE_mutual_information_difference(nPts, k, embedding, xkykdTree, kykdTree, xkkdTree, kkdTree, X, xkyPts, kyPts, xkPts, kPts);
     }
