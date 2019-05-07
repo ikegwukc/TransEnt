@@ -274,13 +274,13 @@ int countByDistance(ANNkd_tree* kdTree, ANNpoint Pt, double Distance, int z)
 
  cout<<"cnt: "<<z<<": "<<cnt<<endl;
 
- if (z == 1){
-   for(int i=0;i<cnt;i++){
+ //if (z == 1){
+//   for(int i=0;i<cnt;i++){
      //printf("%d of %d: %f dist %f pindx %d\n",i,cnt,abs(dists[i]-Distance),dists[i],nnIdx[i]);
      //cout<<i<<" of "<< cnt<<" : "<<abs(dists[i]-Distance)<<" dist "<<dists[i]<<" pindx "<<nnIdx[i]<<endl;
-     cout << "pindx"<<nnIdx[i]<<endl;
-     }
- }
+//     cout << "pindx"<<nnIdx[i]<<endl;
+//     }
+// }
 
   return cnt;
 }
